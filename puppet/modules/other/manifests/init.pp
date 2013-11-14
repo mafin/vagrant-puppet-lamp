@@ -1,8 +1,16 @@
 class other 
 {
-    package 
-    { 
-        "curl":
+     $packages = [
+        "curl",
+        "unzip",
+        "mc",
+        "imagemagick",
+        "redis-server"
+    ]
+
+    package
+    {
+        $packages:
             ensure  => present,
             require => Exec['apt-get update']
     }

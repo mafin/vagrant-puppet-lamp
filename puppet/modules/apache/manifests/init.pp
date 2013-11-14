@@ -6,7 +6,13 @@ class apache
             ensure  => present,
             require => Exec['apt-get update']
     }
-    
+
+    package {
+        "libapache2-mod-php5":
+        ensure => present,
+        require => Exec['apt-get update']
+    }
+
     service 
     { 
         "apache2":
@@ -33,12 +39,6 @@ class apache
         "/etc/apache2/sites-available/default":
             ensure  => present,
             source  => "/vagrant/puppet/templates/vhost",
-            require => Package['apache2'],
-    }
-
-    exec 
-    { 
-        'echo "ServerName localhost" | sudo tee /etc/apache2/conf.d/fqdn':
             require => Package['apache2'],
     }
 }

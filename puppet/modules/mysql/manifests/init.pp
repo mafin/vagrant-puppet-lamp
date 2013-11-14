@@ -1,6 +1,6 @@
 class mysql 
 {
-    $mysqlPassword = "root"
+    $mysqlPassword = "123456789"
  
     package 
     { 
@@ -17,11 +17,18 @@ class mysql
             require => Package["mysql-server"],
     }
 
-    exec 
-    { 
+    exec {
         "set-mysql-password":
-            unless => "mysqladmin -uroot -p$mysqlPassword status",
+            unless  => "mysql -uroot -p$mysqlPassword",
             command => "mysqladmin -uroot password $mysqlPassword",
             require => Service["mysql"],
+    }
+
+    exec {
+        "load-schema-world":
+            #path    => "/usr/bin:/usr/sbin:/bin",
+            command => "mysql -u root -p$mysqlPassword < /vagrant/puppet/scripts/mysql/world.sql",
+            unless  => "mysql -u root -p$mysqlPassword -e \"use world\"",
+            require => Service['mysql'],
     }
 }

@@ -1,21 +1,21 @@
 <VirtualHost *:80>
-	ServerAdmin info@inventis.be
+	ServerAdmin admin@puppet.dev
 
-	DocumentRoot /vagrant/src
+	DocumentRoot /var/www/dev/puppet/www
 	
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
 	</Directory>
 	
-	<Directory /vagrant/src/>
+	<Directory //var/www/dev/puppet/www>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride All
 		Order allow,deny
 		allow from all
 	</Directory>
 
-	ErrorLog /var/log/apache2/error.log
+	ErrorLog /var/log/apache2/puppet.dev-error.log
 	LogLevel warn
-	CustomLog /var/log/apache2/access.log combined
+	CustomLog /var/log/apache2/puppet.dev-access.log combined
 </VirtualHost>

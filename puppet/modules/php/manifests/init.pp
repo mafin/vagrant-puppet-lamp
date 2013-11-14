@@ -9,7 +9,12 @@ class php
         "php-apc", 
         "php5-mcrypt", 
         "php5-gd", 
-        "php5-curl"
+        "php5-curl",
+        "php5-memcached",
+        "php5-sqlite",
+        "php5-xdebug",
+        "php5-xmlrpc",
+        "php5-json"
     ]
     
     package 
@@ -17,11 +22,5 @@ class php
         $packages:
             ensure  => present,
             require => Exec['apt-get update']
-    }
-  
-    exec 
-    { 
-        "sed -i 's|#|//|' /etc/php5/cli/conf.d/mcrypt.ini":
-  		    require => Package['php5'],
     }
 }

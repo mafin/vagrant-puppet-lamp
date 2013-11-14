@@ -1,4 +1,4 @@
-vagrant-puppet-lamp
+vagrant-puppet-lamp-box
 ===================
 
 Basic Vagrant setup with provisioning by Puppet

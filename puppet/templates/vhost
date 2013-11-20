@@ -8,7 +8,7 @@
 		AllowOverride None
 	</Directory>
 	
-	<Directory //var/www/dev/puppet/www>
+	<Directory /var/www/dev/puppet/www>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride All
 		Order allow,deny

@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.vm.network :forwarded_port, guest: 80, host: 8080
   config.vm.network :private_network, ip: "192.168.56.101"
   config.vm.synced_folder ".", "/vagrant/"
-  config.vm.synced_folder "./src", "/var/www/dev/puppet/www", nfs: true
+  config.vm.synced_folder "./www", "/var/www/dev/puppet/www", nfs: true
   config.vm.provider :virtualbox do |vb|
     vb.gui = false
     #vb.customize ["modifyvm", :id, "--name", "Ubuntu 12.04"]
